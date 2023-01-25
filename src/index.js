@@ -1,4 +1,7 @@
-const { ApolloServer } = require("apollo-server");
+//サブスクリプション実装
+//publisher(送信)/Subscriber(受信)
+const { ApolloServer, PubSub } = require("apollo-server");
+
 //スキーマを別ファイルに移動するため
 const fs = require("fs");
 const path = require("path");
@@ -14,10 +17,6 @@ const User = require("./resolvers/User");
 const Link = require("./resolvers/Link");
 const Subscription = require("./resolvers/Subscription");
 const Vote = require("./resolvers/Vote");
-
-//サブスクリプション実装
-//publisher(送信)/Subscriber(受信)
-const { PubSub } = require("apollo-server");
 
 const prisma = new PrismaClient();
 const pubsub = new PubSub();
